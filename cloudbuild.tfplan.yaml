@@ -13,14 +13,6 @@
 # limitations under the License.
 
 
-steps:
-- id: 'branch name'
-  name: 'alpine'
-  entrypoint: 'sh'  
-  args: 
-  - '-c'
-  - | 
- 
 - id: 'tf init'
   name: 'hashicorp/terraform:1.7'
   entrypoint: 'sh'
