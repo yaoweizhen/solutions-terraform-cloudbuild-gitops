@@ -13,9 +13,10 @@
 # limitations under the License.
 
 
-terraform {
-  backend "gcs" {
-    bucket = "delta-pagoda-386920-tfstate"
-    prefix = "env/prod"
-  }
+variable "project" {
+  type = string
+}
+
+variable "env" {
+  type = string
 }

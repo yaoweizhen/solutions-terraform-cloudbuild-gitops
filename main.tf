@@ -13,9 +13,28 @@
 # limitations under the License.
 
 
-terraform {
-  backend "gcs" {
-    bucket = "delta-pagoda-386920-tfstate"
-    prefix = "env/prod"
-  }
+# locals {
+#   env = "dev"
+# }
+
+provider "google" {
+  project = var.project
+}
+
+module "vpc" {
+  source  = "./modules/vpc"
+  project = var.project
+  env     = var.env
+}
+
+module "http_server" {
+  source  = "./modules/http_server"
+  project = var.project
+  subnet  = module.vpc.subnet
+}
+
+module "firewall" {
+  source  = "./modules/firewall"
+  project = var.project
+  subnet  = module.vpc.subnet
 }

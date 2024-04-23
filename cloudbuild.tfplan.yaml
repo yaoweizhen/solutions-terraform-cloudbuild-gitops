@@ -12,10 +12,34 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+steps:
+- id: 'tf init'
+  name: 'hashicorp/terraform:1.7'
+  entrypoint: 'sh'
+  args: 
+  - '-c'
+  - |
+      echo "***********************"
+      echo "$BRANCH_NAME"
+      echo "***********************"
 
-terraform {
-  backend "gcs" {
-    bucket = "delta-pagoda-386920-tfstate"
-    prefix = "env/prod"
-  }
-}
+      terraform init \
+        -input=false
+        -backend-config prefix=$BRANCH_NAME \
+        -var env=$BRANCH_NAME
+    
+
+# [START tf-plan]
+- id: 'tf plan'
+  name: 'hashicorp/terraform:1.7'
+  entrypoint: 'sh'
+  args: 
+  - '-c'
+  - | 
+      terraform plan \ 
+        -input=false
+# [END tf-plan]
+
+options:
+  env: ['TF_IN_AUTOMATION=1']
+  logging: CLOUD_LOGGING_ONLY

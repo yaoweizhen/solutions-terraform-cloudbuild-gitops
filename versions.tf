@@ -14,8 +14,5 @@
 
 
 terraform {
-  backend "gcs" {
-    bucket = "delta-pagoda-386920-tfstate"
-    prefix = "env/prod"
-  }
+  required_version = "~> 1.7.0"
 }
