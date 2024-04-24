@@ -25,7 +25,7 @@ steps:
 
       terraform init \
         -input=false \
-        -backend-config=\""prefix=${BRANCH_NAME}"\" \
+        -backend-config="prefix=${BRANCH_NAME}" \
         -var env=$BRANCH_NAME \
         || exit 1
                 
