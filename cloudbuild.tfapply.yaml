@@ -44,8 +44,8 @@ steps:
 options:
   env: [
     'TF_IN_AUTOMATION=1',
-    "TF_CLI_project=${$PROJECT_ID}",
-    "TF_CLI_prefix=${BRANCH_NAME}",
-    "TF_VAR_env=${BRANCH_NAME}"
+    "TF_CLI_project=$PROJECT_ID",
+    "TF_CLI_prefix=$BRANCH_NAME",
+    "TF_VAR_env=$BRANCH_NAME"
   ]
   logging: CLOUD_LOGGING_ONLY
