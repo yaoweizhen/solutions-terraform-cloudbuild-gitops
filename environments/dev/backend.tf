@@ -15,6 +15,6 @@
 terraform {
   backend "gcs" {
     bucket = "delta-pagoda-386920-tfstate"
-    prefix = "env/dev"
+    prefix = "dev"
   }
 }

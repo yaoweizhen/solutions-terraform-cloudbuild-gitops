@@ -21,6 +21,13 @@ provider "google" {
   project = var.project
 }
 
+# data "terraform_remote_state" "remote" {
+#   backend = "remote"
+#   config = {
+#     prefix = var.env
+#   }
+# }
+
 module "vpc" {
   source  = "./modules/vpc"
   project = var.project

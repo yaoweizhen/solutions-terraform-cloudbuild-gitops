@@ -27,22 +27,22 @@ steps:
   entrypoint: 'sh'
   args: 
   - '-c'
-  - | 
+  - |
       cd environments/${BRANCH_NAME}
-      terraform plan -input=false -out tfplan
+      terraform plan -input=false -destroy -out tfplan
       
-- id: 'tf apply'
+- id: 'tf destroy'
   name: 'hashicorp/terraform:1.7'
   entrypoint: 'sh'
   args: 
   - '-c'
-  - | 
+  - |
       cd environments/${BRANCH_NAME}
-      terraform apply -input=false tfplan
+      terraform apply -input=false -destroy tfplan
 
 options:
   env: 
-  - 'TF_IN_AUTOMATION=1'
+  - 'TF_IN_AUTOMATION=1'    
   - "TF_CLI_project=${PROJECT_ID}"
   - "TF_CLI_prefix=${BRANCH_NAME}"
   - "TF_VAR_env=${BRANCH_NAME}"

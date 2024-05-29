@@ -13,9 +13,17 @@
 # limitations under the License.
 
 
+
 locals {
   env = "dev"
 }
+
+# data "terraform_remote_state" "remote" {
+#   backend = "remote"
+#   config = {
+#     prefix = local.env
+#   }
+# }
 
 provider "google" {
   project = var.project
